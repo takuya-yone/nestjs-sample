@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nestjs:
+    build: ./
+    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-sample:1.0.0
+    ports:
+      - "3000:3000"
+    # depends_on:
+    #   - mysqldb
+    hostname: api-server
+    # environment:
+    #   HOSTNAME: '0.0.0.0'
+    #   DATABASE_WRITER_HOST: 'api-server'
+    #   DATABASE_READER_HOST: 'api-server'
+    #   DATABASE_USER: 'admin'
+    #   DATABASE_PASSWOED: 'admin'
