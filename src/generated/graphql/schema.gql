@@ -2,19 +2,31 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CommentModel {
-  comment: String!
-  id: String!
-  postId: String!
+type Book {
+  author: String!
+  createdAt: DateTime!
+  id: ID!
+  price: Int!
+  title: String!
 }
 
-type PostModel {
-  comments: [CommentModel!]!
-  id: String!
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  addBook(newBook: NewBookInput!): Book!
+  removeBook(id: Int!): Boolean!
+}
+
+input NewBookInput {
+  author: String!
+  price: Int!
   title: String!
 }
 
 type Query {
-  comments: [CommentModel!]
-  posts: [PostModel!]
+  books: [Book!]!
+  getBook(id: Int!): Book!
 }
