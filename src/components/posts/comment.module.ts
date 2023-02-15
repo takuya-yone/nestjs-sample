@@ -3,6 +3,6 @@ import { PostsResolver } from './post.resolvers';
 import { CommentsResolver } from './comment.resolvers';
 
 @Module({
-  providers: [PostsResolver, CommentsResolver],
+  providers: [PostsResolver],
 })
 export class PostsModule {}
