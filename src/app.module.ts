@@ -11,7 +11,7 @@ import { HelloworldService } from './helloworld/helloworld.service';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { PostsModule } from './components/posts/posts.module';
+import { BlogModule } from './components/posts/blog.module';
 import * as path from 'path';
 
 @Module({
@@ -24,7 +24,7 @@ import * as path from 'path';
       sortSchema: true,
       driver: ApolloDriver,
     }),
-    PostsModule,
+    BlogModule,
   ],
   controllers: [AppController, HelloworldController],
   providers: [AppService, HelloworldService],
