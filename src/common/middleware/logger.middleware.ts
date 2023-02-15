@@ -8,7 +8,7 @@ const logger = new Logger('LoggerMiddleware');
 export class LoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     // console.log('Request...');
-    logger.log(req.url);
+    // logger.log(req.url);
     next();
   }
 }

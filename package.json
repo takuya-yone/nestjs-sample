@@ -17,13 +17,18 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "nest": "nest"
   },
   "dependencies": {
+    "@nestjs/apollo": "^10.2.0",
     "@nestjs/common": "^9.3.8",
     "@nestjs/core": "^9.3.8",
+    "@nestjs/graphql": "^10.2.0",
     "@nestjs/platform-express": "^9.3.8",
     "@nestjs/swagger": "^6.2.1",
+    "apollo-server-express": "^3.11.1",
+    "graphql": "^16.6.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0"
   },
