@@ -14,3 +14,25 @@ services:
     #   DATABASE_READER_HOST: 'api-server'
     #   DATABASE_USER: 'admin'
     #   DATABASE_PASSWOED: 'admin'
+
+  # sonarqube:
+  #   image: sonarqube:lts-community
+  #   ports:
+  #     - "9000:9000"
+  #   environment:
+  #     - SONAR_JDBC_URL=jdbc:postgresql://postgres-server:5432/sonar
+  #     - SONAR_JDBC_USERNAME=sonar
+  #     - SONAR_JDBC_PASSWORD=Test12345
+  #   hostname: sonar-server
+
+  # postgres:
+  #   image: postgres
+  #   hostname: postgres-server
+  #   environment:
+  #     - POSTGRES_USER=sonar
+  #     - POSTGRES_PASSWORD=Test12345
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
