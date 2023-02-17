@@ -10,6 +10,13 @@ type Book {
   title: String!
 }
 
+type Comment {
+  bookId: ID!
+  comment: String!
+  createdAt: DateTime!
+  id: ID!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -17,7 +24,9 @@ scalar DateTime
 
 type Mutation {
   addBook(newBook: NewBookInput!): Book!
+  addComment(newComment: NewCommentInput!): Comment!
   removeBook(id: Int!): Boolean!
+  removeComment(id: Int!): Boolean!
 }
 
 input NewBookInput {
@@ -26,7 +35,14 @@ input NewBookInput {
   title: String!
 }
 
+input NewCommentInput {
+  bookId: ID!
+  comment: String!
+}
+
 type Query {
   books: [Book!]!
+  comments: [Comment!]!
   getBook(id: Int!): Book!
+  getComment(id: Int!): Book!
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Book } from './book';
-import { NewBookInput } from './dto/newBook.input';
+import { Book, Comment } from './book';
+import { NewBookInput, NewCommentInput } from './dto/newBook.input';
 
 let books = [
   {
@@ -26,6 +26,27 @@ let books = [
   },
 ] as Book[];
 
+let comments = [
+  {
+    id: 1,
+    bookId: 2,
+    comment: Math.random().toString(32).substring(2),
+    createdAt: new Date(),
+  },
+  {
+    id: 2,
+    bookId: 2,
+    comment: Math.random().toString(32).substring(2),
+    createdAt: new Date(),
+  },
+  {
+    id: 3,
+    bookId: 3,
+    comment: Math.random().toString(32).substring(2),
+    createdAt: new Date(),
+  },
+] as Comment[];
+
 @Injectable()
 export class BooksService {
   findAll(): Promise<Book[]> {
@@ -50,6 +71,34 @@ export class BooksService {
 
   async remove(id: number): Promise<boolean> {
     books = books.filter((book) => book.id !== id);
+    return true;
+  }
+}
+
+@Injectable()
+export class CommentService {
+  findAll(): Promise<Comment[]> {
+    return Promise.resolve(comments);
+  }
+
+  findOneById(id: number): Promise<Comment> {
+    const comment = comments.find((comment) => comment.id === id);
+    return Promise.resolve(comment);
+  }
+
+  create(data: NewCommentInput): Promise<Comment> {
+    const comment: Comment = {
+      ...data,
+      id: Date.now(),
+      createdAt: new Date(),
+    };
+    comments.push(comment);
+
+    return Promise.resolve(comment);
+  }
+
+  async remove(id: number): Promise<boolean> {
+    comments = comments.filter((comment) => comment.id !== id);
     return true;
   }
 }

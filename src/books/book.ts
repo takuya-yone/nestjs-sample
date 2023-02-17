@@ -17,3 +17,18 @@ export class Book {
   @Field()
   createdAt: Date;
 }
+
+@ObjectType()
+export class Comment {
+  @Field((type) => ID)
+  id: number;
+
+  @Field((type) => ID)
+  bookId: number;
+
+  @Field()
+  comment: string;
+
+  @Field()
+  createdAt: Date;
+}
