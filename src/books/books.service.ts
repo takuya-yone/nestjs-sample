@@ -24,6 +24,13 @@ let books = [
     price: 3000,
     createdAt: new Date(),
   },
+  {
+    id: 4,
+    title: 'test 4',
+    author: 'Joe',
+    price: 3000,
+    createdAt: new Date(),
+  },
 ] as Book[];
 
 let comments = [
@@ -53,6 +60,16 @@ export class BooksService {
     return Promise.resolve(books);
   }
 
+  findManyByAuthor(author: string): Promise<Book[]> {
+    const book = books.filter((book) => book.author === author);
+    return Promise.resolve(book);
+  }
+
+  findManyById(id: number): Promise<Book[]> {
+    const book = books.filter((book) => book.id === id);
+    return Promise.resolve(book);
+  }
+
   findOneById(id: number): Promise<Book> {
     const book = books.find((book) => book.id === id);
     return Promise.resolve(book);
@@ -63,6 +80,7 @@ export class BooksService {
       ...data,
       id: Date.now(),
       createdAt: new Date(),
+      // comments: [],
     };
     books.push(book);
 
@@ -79,6 +97,11 @@ export class BooksService {
 export class CommentService {
   findAll(): Promise<Comment[]> {
     return Promise.resolve(comments);
+  }
+
+  findManyById(id: number): Promise<Comment[]> {
+    const comment = comments.filter((comment) => comment.bookId === id);
+    return Promise.resolve(comment);
   }
 
   findOneById(id: number): Promise<Comment> {

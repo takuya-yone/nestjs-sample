@@ -16,6 +16,9 @@ export class Book {
 
   @Field()
   createdAt: Date;
+
+  // @Field((type) => [Comment], { nullable: true })
+  // comments: Comment[];
 }
 
 @ObjectType()

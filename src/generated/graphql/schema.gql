@@ -43,6 +43,8 @@ input NewCommentInput {
 type Query {
   books: [Book!]!
   comments: [Comment!]!
-  getBook(id: Int!): Book!
-  getComment(id: Int!): Book!
+  getBookById(id: Int!): Book!
+  getComment(id: Int!): Comment!
+  getMabyBookByAuthor(author: String!): [Book!]!
+  getMabyBookById(id: Int!): [Book!]!
 }
