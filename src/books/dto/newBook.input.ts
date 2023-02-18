@@ -18,12 +18,10 @@ export class NewBookInput {
 
 @InputType()
 export class NewCommentInput {
-  @Field((type) => ID)
-  @MaxLength(30)
+  @Field((type) => Int)
   bookId: number;
 
   @Field((type) => String)
-  @Min(1)
-  @Max(9999)
+  @MaxLength(999)
   comment: string;
 }

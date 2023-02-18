@@ -19,6 +19,12 @@ export class BooksResolver {
     private commentsService: CommentService,
   ) {}
 
+  @ResolveField((of) => [Comment])
+  async comments(@Parent() book: Book) {
+    const { id } = book;
+    return this.commentsService.findManyByBookId(id);
+  }
+
   @Query((returns) => [Book])
   books(): Promise<Book[]> {
     return this.booksService.findAll();
@@ -62,22 +68,16 @@ export class BooksResolver {
   async removeBook(@Args({ name: 'id', type: () => Int }) id: number) {
     return this.booksService.remove(id);
   }
-
-  // @ResolveField()
-  // async books(@Parent() book: Book) {
-  //   const { id } = book;
-  //   return this.commentsService.findManyById(id);
-  // }
 }
 
 @Resolver((of) => Comment)
 export class CommentsResolver {
   constructor(private commentService: CommentService) {}
 
-  @Query((returns) => [Comment])
-  comments(): Promise<Comment[]> {
-    return this.commentService.findAll();
-  }
+  // @Query((returns) => [Comment])
+  // comments(): Promise<Comment[]> {
+  //   return this.commentService.findAll();
+  // }
 
   @Query((returns) => Comment)
   async getComment(@Args({ name: 'id', type: () => Int }) id: number) {

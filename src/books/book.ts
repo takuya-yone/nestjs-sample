@@ -17,8 +17,8 @@ export class Book {
   @Field()
   createdAt: Date;
 
-  // @Field((type) => [Comment], { nullable: true })
-  // comments: Comment[];
+  @Field((type) => [Comment], { nullable: true, defaultValue: [] })
+  comments: Comment[];
 }
 
 @ObjectType()
@@ -29,7 +29,7 @@ export class Comment {
   @Field((type) => ID)
   bookId: number;
 
-  @Field()
+  @Field((type) => String)
   comment: string;
 
   @Field()

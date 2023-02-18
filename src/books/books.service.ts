@@ -80,7 +80,7 @@ export class BooksService {
       ...data,
       id: Date.now(),
       createdAt: new Date(),
-      // comments: [],
+      comments: [],
     };
     books.push(book);
 
@@ -99,6 +99,11 @@ export class CommentService {
     return Promise.resolve(comments);
   }
 
+  findManyByBookId(bookId: number): Promise<Comment[]> {
+    const comment = comments.filter((comment) => comment.bookId === bookId);
+    return Promise.resolve(comment);
+  }
+
   findManyById(id: number): Promise<Comment[]> {
     const comment = comments.filter((comment) => comment.bookId === id);
     return Promise.resolve(comment);
@@ -115,7 +120,9 @@ export class CommentService {
       id: Date.now(),
       createdAt: new Date(),
     };
+    console.log(comment);
     comments.push(comment);
+    console.log(comments);
 
     return Promise.resolve(comment);
   }

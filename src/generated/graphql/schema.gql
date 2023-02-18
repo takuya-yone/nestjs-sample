@@ -4,6 +4,7 @@
 
 type Book {
   author: String!
+  comments: [Comment!]
   createdAt: DateTime!
   id: ID!
   price: Int!
@@ -36,13 +37,12 @@ input NewBookInput {
 }
 
 input NewCommentInput {
-  bookId: ID!
+  bookId: Int!
   comment: String!
 }
 
 type Query {
   books: [Book!]!
-  comments: [Comment!]!
   getBookById(id: Int!): Book!
   getComment(id: Int!): Comment!
   getMabyBookByAuthor(author: String!): [Book!]!
