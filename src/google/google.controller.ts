@@ -9,7 +9,9 @@ export class GoogleController {
   // ここにリクエストがいくことでoauth認証フローのスタート
   @Get()
   @UseGuards(AuthGuard('google'))
-  async googleAuth(@Request() req) {}
+  async googleAuth(@Request() req){
+    return null;
+  }
 
   // 認証フローが終了し、アクセストークンを取得したら、ここにリダイレクトされる
   @Get('redirect')
