@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { HelloworldController } from './helloworld/helloworld.controller';
-import { HelloworldService } from './helloworld/helloworld.service';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { BooksModule } from './books/books.module';
+import { HelloworldModule } from './helloworld/helloworld.module';
+import { GoogleModule } from './google/google.module';
 import * as path from 'path';
 
 @Module({
@@ -24,10 +24,12 @@ import * as path from 'path';
       sortSchema: true,
       driver: ApolloDriver,
     }),
+    HelloworldModule,
     BooksModule,
+    GoogleModule,
   ],
-  controllers: [AppController, HelloworldController],
-  providers: [AppService, HelloworldService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
