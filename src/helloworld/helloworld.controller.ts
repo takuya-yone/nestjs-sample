@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Req } from '@nestjs/common';
+import { Controller, Get, Param, Req, ParseIntPipe } from '@nestjs/common';
 import { HelloworldService } from './helloworld.service';
 import { Request } from 'express';
+import { Max, MaxLength, Min } from 'class-validator';
 
 @Controller('helloworld')
 export class HelloworldController {
@@ -13,10 +14,11 @@ export class HelloworldController {
 
   @Get(':id/')
   routeParameters(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: string,
     @Req() request: Request,
     // @Param('detailId') detailId: string,
   ) {
+    console.log(id);
     return this.helloworldService.getHelloWorld_id(id, request);
   }
 }
