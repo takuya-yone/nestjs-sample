@@ -22,6 +22,7 @@
     "sonar": "node sonar-scanner.js"
   },
   "dependencies": {
+    "@apollo/server": "^4.7.4",
     "@nestjs/apollo": "^12.0.1",
     "@nestjs/common": "^10.0.2",
     "@nestjs/config": "^3.0.0",
