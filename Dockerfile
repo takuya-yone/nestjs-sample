@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/node:19.6.0-alpine AS builder
+FROM public.ecr.aws/docker/library/node:18.16.0-alpine AS builder
 
 WORKDIR /app
 ENV NODE_ENV=production 
@@ -8,7 +8,7 @@ RUN yarn install --frozen-lockfile
 RUN yarn build
 
 
-FROM public.ecr.aws/docker/library/node:19.6.0-alpine AS runner
+FROM public.ecr.aws/docker/library/node:18.16.0-alpine AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production 
