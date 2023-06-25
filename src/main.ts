@@ -8,6 +8,7 @@ async function bootstrap() {
     logger: ['error', 'warn', 'debug', 'log'],
   });
   app.useGlobalPipes(new ValidationPipe());
+  app.enableShutdownHooks();
 
   const config = new DocumentBuilder()
     .setTitle('nestjs example')
